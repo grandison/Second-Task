@@ -1,4 +1,12 @@
 NewsSite::Application.routes.draw do
+  resources :comments
+
+  resources :categories
+
+  resources :news
+
+  resources :users
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

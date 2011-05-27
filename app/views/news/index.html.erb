@@ -1,0 +1,35 @@
+<h1>Listing news</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Category</th>
+    <th>Topic</th>
+    <th>Text</th>
+    <th>Source</th>
+    <th>Tags</th>
+    <th>Rating</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @news.each do |news| %>
+  <tr>
+    <td><%= news.user_id %></td>
+    <td><%= news.category_id %></td>
+    <td><%= news.topic %></td>
+    <td><%= news.text %></td>
+    <td><%= news.source %></td>
+    <td><%= news.tags %></td>
+    <td><%= news.rating %></td>
+    <td><%= link_to 'Show', news %></td>
+    <td><%= link_to 'Edit', edit_news_path(news) %></td>
+    <td><%= link_to 'Destroy', news, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New New', new_news_path %>
