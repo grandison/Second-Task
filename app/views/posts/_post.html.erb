@@ -1,9 +1,15 @@
 <tr>
   <td class="post">
-    <span class="content"><%= post.text %></span>
+    <span class="content">
+      <%= link_to post.topic,post %>
+      <% if signed_in? %>
+        <%= link_to "edit",edit_post_path(post) %>
+      <% end %>
+      <br />
+    </span>
     <span class="timestamp">
       Posted <%= time_ago_in_words(post.created_at) %> ago.
-    </span>
+    </span> <br /> <br />
   </td>
 </tr>
 

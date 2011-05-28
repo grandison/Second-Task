@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110528144447
+# Schema version: 20110528171532
 #
 # Table name: comments
 #
@@ -8,6 +8,7 @@
 #  post_id    :integer
 #  created_at :datetime
 #  updated_at :datetime
+#  text       :string(255)
 #
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html

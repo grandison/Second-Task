@@ -5,7 +5,9 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
-      <%= render 'posts/form' %>
+
+      <%= render 'posts/form' if !current_user.nil? &&
+                                      current_user.id.to_s==params[:id] %>
       <% unless @user.posts.empty? %>
         <table class="posts" summary="User posts">
           <%= render @posts %>
@@ -15,8 +17,8 @@
     </td>
     <td class="sidebar round">
       <strong>Name</strong> <%= @user.name %><br />
-      <strong>URL</strong>  <%= link_to user_path(@user), @user %>
-      <strong>Microposts</strong> <%= @user.posts.count %>
+      <strong>URL</strong>  <%= link_to user_path(@user), @user %><br />
+      <strong>Posts</strong> <%= @user.posts.count %>
     </td>
   </tr>
 </table>

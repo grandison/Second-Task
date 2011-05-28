@@ -34,8 +34,12 @@
   <b>Rating:</b>
   <%= @post.rating %>
 </p>
-<%= render 'comments/form' %>
+<% if signed_in? %>
+  <%= render 'comments/form' %>
+<% end %>
 <%= render @comments%>
-<%= link_to 'Edit', edit_post_path(@post) %> |
+<% if signed_in? %>
+<%= link_to 'Edit', edit_post_path(@post) %>|
+<% end %>
 <%= link_to 'Back', posts_path %>
 
