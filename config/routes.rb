@@ -1,7 +1,10 @@
 NewsSite::Application.routes.draw do
 
-  resources :posts
-
+  resources :posts do
+    member do
+      get 'vote'
+    end
+  end
   resources :sessions, :only => [:new, :create, :destroy]
 
 

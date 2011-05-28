@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_filter :authenticate, :except => [:show]
+  before_filter :authenticate, :except => [:show,:vote]
   before_filter :find_post, :only => [:edit,:update,:destroy]
   def index
     @posts = Post.all
@@ -48,6 +48,18 @@ class PostsController < ApplicationController
       format.html { redirect_to(posts_url) }
     end
   end
+
+  def vote
+    render :nothing => true
+    post=Post.find(params[:id])
+    unless cookies[:vote]
+      vote = params[:vote]=="1"?1:-1
+      cookies[:vote]=1
+      post.rating+=vote
+      post.save
+    end
+  end
+
 private
     def find_post
       @post = Post.find(params[:id])

@@ -1,12 +1,14 @@
 <tr>
   <td class="post">
     <span class="content">
+      <%= link_to "-1", vote_post_path(post,:vote => -1), :method => :post, :remote => true %>
       <%= link_to post.topic,post %>
       <% if signed_in? %>
         <%= link_to "edit",edit_post_path(post) %>
       <% end %>
-      <br />
+      <%= link_to "+1", vote_post_path(post,:vote => 1), :method => :post, :remote => true %>
     </span>
+    <br />
     <span class="timestamp">
       Posted <%= time_ago_in_words(post.created_at) %> ago.
     </span> <br /> <br />
