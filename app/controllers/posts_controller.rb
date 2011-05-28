@@ -13,7 +13,8 @@ class PostsController < ApplicationController
   # GET /posts/1.xml
   def show
     @post = Post.find(params[:id])
-
+    @comments=@post.comments
+    @comment=Comment.new
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @post }
@@ -40,7 +41,7 @@ class PostsController < ApplicationController
   # POST /posts.xml
   def create
     @post = Post.new(params[:post])
-    @post.user_id = current_user.user_id
+    @post.user_id = current_user.id
     @post.rating = 0
     respond_to do |format|
       if @post.save

@@ -11,15 +11,16 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
+  <div class="field" style="display:none">
+    <%= f.label :post_id %><br />
+    <%= f.text_field :post_id, :value => @post.id %>
   </div>
   <div class="field">
-    <%= f.label :new_id %><br />
-    <%= f.text_field :new_id %>
+    <%= f.label :text %><br />
+    <%= f.text_field :text %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
