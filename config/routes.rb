@@ -13,6 +13,7 @@ NewsSite::Application.routes.draw do
   match '/contact', :to => 'pages#contact'
   match '/about',   :to => 'pages#about'
   match '/help',    :to => 'pages#help'
+  match 'other_news', :to => 'pages#other_news'
   match '/signup',  :to => 'users#new'
   root :to => 'pages#home'
 

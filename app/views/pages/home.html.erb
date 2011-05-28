@@ -1,4 +1,11 @@
-  <table class="front" summary="For signed-in users">
-    <%= render @posts %>
+  <table class="front">
+    <tr>
+    <%= render :partial => @posts, :locals => {:rating => @rating_min} %>
+    <% if @title=="Home" %>
+      <td>Only cool news are showing.
+        <%= link_to "Want more?",other_news_path%>
+      </td>
+    <% end %>
+    </tr>
   </table>
 
