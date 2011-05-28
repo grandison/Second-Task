@@ -16,7 +16,10 @@ class UsersController < ApplicationController
   # GET /users/1.xml
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts.paginate(:page => params[:page])
     @title = @user.name
+    @post =Post.new
+    @categories=Category.all.map{|cat| cat.id}
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }
@@ -85,9 +88,6 @@ class UsersController < ApplicationController
   end
   private
 
-    def authenticate
-      deny_access unless signed_in?
-    end
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_path) unless current_user?(@user)

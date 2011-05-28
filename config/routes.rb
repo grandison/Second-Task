@@ -1,5 +1,7 @@
 NewsSite::Application.routes.draw do
 
+  resources :posts
+
   resources :sessions, :only => [:new, :create, :destroy]
 
 

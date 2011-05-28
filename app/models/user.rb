@@ -1,4 +1,18 @@
 # == Schema Information
+# Schema version: 20110528144447
+#
+# Table name: users
+#
+#  id                 :integer         not null, primary key
+#  name               :string(255)
+#  email              :string(255)
+#  created_at         :datetime
+#  updated_at         :datetime
+#  encrypted_password :string(255)
+#  salt               :string(255)
+#
+
+# == Schema Information
 # Schema version: 20110527174614
 #
 # Table name: users
@@ -25,8 +39,8 @@ class User < ActiveRecord::Base
   validates :password, :presence => true,
                       :confirmation => true,
                       :length => { :within => 6..40 }
-  has_many :news
-  has_many :comments
+  has_many :posts, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
 
   before_save :encrypt_password
 

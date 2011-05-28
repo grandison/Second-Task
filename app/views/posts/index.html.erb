@@ -1,0 +1,35 @@
+<h1>Listing posts</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Category</th>
+    <th>Topic</th>
+    <th>Text</th>
+    <th>Source</th>
+    <th>Tags</th>
+    <th>Rating</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @posts.each do |post| %>
+  <tr>
+    <td><%= post.user_id %></td>
+    <td><%= post.category_id %></td>
+    <td><%= post.topic %></td>
+    <td><%= post.text %></td>
+    <td><%= post.source %></td>
+    <td><%= post.tags %></td>
+    <td><%= post.rating %></td>
+    <td><%= link_to 'Show', post %></td>
+    <td><%= link_to 'Edit', edit_post_path(post) %></td>
+    <td><%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Post', new_post_path %>
