@@ -1,32 +1,35 @@
-<span class="title colborder">
-  <%= link_to post.topic,post_path(post) %>
-</span>
-<span>
-  <%= link_to post.user.name,user_path(post.user), :class => "author" %>
-  Posted <%= time_ago_in_words(post.created_at) %> ago. <br />
-</span>
+<div id=<%="post#{post.id}" %>>
+    <span class="title colborder">
+      <%= link_to post.topic,post_path(post) %>
+    </span>
+    <span>
+      <%= link_to post.user.name,user_path(post.user), :class => "author" %>
+      Posted <%= time_ago_in_words(post.created_at) %> ago. <br />
+    </span>
 
-<span>
-  <b>Category:</b>
-  <%= post.category.name %>
-</span>
-<span>
-  <b>Tags:</b>
-  <%= post.tags %>
-</span>
-<span>
-  <b>Source:</b>
-  <%= post.source %>
-</span>
-<br />
-<br />
-<p>
-  <%= post.text %>
-</p>
-<%= render :partial => "posts/rating",:locals =>{:post => post} %>
-<br />
+    <span>
+      <b>Category:</b>
+      <%= post.category.name %>
+    </span>
+    <span>
+      <b>Tags:</b>
+      <%= post.tags %>
+    </span>
+    <span>
+      <b>Source:</b>
+      <%= post.source %>
+    </span>
+    <br />
+    <br />
+    <p>
+      <%= post.text %>
+    </p>
+    <%= render :partial => "posts/rating",:locals =>{:post => post} %>
+    <br />
 
-<br />
+    <br />
 
-<br />
+    <br />
+
+</div>
 

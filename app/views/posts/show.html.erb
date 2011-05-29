@@ -1,40 +1,42 @@
-<p id="notice" ><%= notice %></p>
-<span class="subheader">
-  <% if current_user?(@post.user) %>
-  <%= link_to 'Edit post', edit_post_path(@post) %>
-  <% end %>
-</span>
-<br />
-<span class="title colborder">
-  <%= @post.topic %>
-</span>
-<span>
-  <%= link_to @post.user.name,user_path(@post.user), :class => "author" %>
-  Posted <%= time_ago_in_words(@post.created_at) %> ago. <br />
-</span>
+<div id=<%="post#{@post.id}" %>>
+  <p id="notice" ><%= notice %></p>
+  <span class="subheader">
+    <% if current_user?(@post.user) %>
+    <%= link_to 'Edit post', edit_post_path(@post) %>
+    <% end %>
+  </span>
+  <br />
+  <span class="title colborder">
+    <%= @post.topic %>
+  </span>
+  <span>
+    <%= link_to @post.user.name,user_path(@post.user), :class => "author" %>
+    Posted <%= time_ago_in_words(@post.created_at) %> ago. <br />
+  </span>
 
-<span>
-  <b>Category:</b>
-  <%= @post.category.name %>
-</span>
-<span>
-  <b>Tags:</b>
-  <%= @post.tags %>
-</span>
-<span>
-  <b>Source:</b>
-  <%= @post.source %>
-</span>
-<br />
-<br />
-<p>
-  <%= @post.text %>
-</p>
-<%= render :partial => "posts/rating",:locals =>{:post => @post} %>
-<br />
-<br />
-<br />
+  <span>
+    <b>Category:</b>
+    <%= @post.category.name %>
+  </span>
+  <span>
+    <b>Tags:</b>
+    <%= @post.tags %>
+  </span>
+  <span>
+    <b>Source:</b>
+    <%= @post.source %>
+  </span>
+  <br />
+  <br />
+  <p>
+    <%= @post.text %>
+  </p>
+  <%= render :partial => "posts/rating",:locals =>{:post => @post} %>
+</div>
+  <br />
+  <br />
+  <br />
 
-  <%= render 'comments/form' %>
-<%= render @comments%>
+    <%= render 'comments/form' %>
+  <%= render @comments%>
 

@@ -1,4 +1,4 @@
 $(function(){
-  $(".rating").html("<%= @rating %>");
+  $("#post<%=@post_id%>").find(".rating").html("<%= @rating %>");
 });
 

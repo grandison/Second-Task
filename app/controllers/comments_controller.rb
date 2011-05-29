@@ -20,8 +20,11 @@ before_filter :find_comment, :only => [:show,:edit,:update,:destroy]
 
   def create
     @comment = Comment.new(params[:comment])
-
+    if signed_in?
     @comment.user_id=current_user.id
+    else
+    @comment.user_id=0
+    end
     respond_to do |format|
       if @comment.save
         format.html { redirect_to(@comment, :notice => 'Comment was successfully created.') }

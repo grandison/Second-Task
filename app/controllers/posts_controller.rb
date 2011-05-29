@@ -51,16 +51,26 @@ class PostsController < ApplicationController
   def vote
     respond_to do |format|
       format.js do
-          post=Post.find(params[:id])
+          if signed_in?
+            user_id = current_user.id
+          else
+            user_id = 0
+          end
+          @post_id=params[:id]
+          post=Post.find(@post_id)
+          is_vote=UserVotes.where(:user_id=>user_id,:post_id=>@post_id)
           @rating="You already have voted"
-          unless cookies[:vote] || (signed_in?&&!current_user.vote)
+          unless (cookies[@post_id] || (signed_in?&&is_vote))
             vote = params[:vote]=="1"?1:-1
-            cookies[:vote]=1
+            cookies[@post_id]=1
             post.rating+=vote
             post.save
             @rating=post.rating
+            if signed_in?
+              UserVotes.create(:user_id=>user_id,:post_id=>@post_id)
+            end
           end
-      end
+        end
     end
   end
 
