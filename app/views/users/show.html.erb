@@ -8,7 +8,11 @@
 
       <%= render 'posts/form' if !current_user.nil? &&
                                       current_user.id.to_s==params[:id] %>
+      <br />
       <% unless @user.posts.empty? %>
+        <span class="span-4">Your posts:</span>
+        <br />
+        <br />
         <table class="posts" summary="User posts">
           <%= render @posts %>
         </table>

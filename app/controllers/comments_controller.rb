@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-before_filter :authenticate
 before_filter :find_comment, :only => [:show,:edit,:update,:destroy]
 
   def index

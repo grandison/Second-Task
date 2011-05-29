@@ -16,11 +16,10 @@
     <%= f.text_field :post_id, :value => @post.id %>
   </div>
   <div class="field">
-    <%= f.label :text %><br />
     <%= f.text_field :text %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :value => "comment" %>
   </div>
 <% end %>
 

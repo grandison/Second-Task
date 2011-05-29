@@ -2,7 +2,7 @@
   <td class="comment">
     <span class="content">
       <%= link_to comment.text,comment %>
-      <% if signed_in? %>
+      <% if current_user?(comment.user) %>
         <%= link_to "edit",edit_comment_path(comment) %>
       <% end %>
       <br />

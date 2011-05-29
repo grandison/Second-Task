@@ -1,8 +1,8 @@
 NewsSite::Application.routes.draw do
 
-  resources :posts do
+  resources :posts, :except => [:index] do
     member do
-      get 'vote'
+      post 'vote'
     end
   end
   resources :sessions, :only => [:new, :create, :destroy]
@@ -17,9 +17,9 @@ NewsSite::Application.routes.draw do
   match '/signup',  :to => 'users#new'
   root :to => 'pages#home'
 
-  resources :comments
+  resources :comments, :except => [:index]
 
-  resources :categories
+  #resources :categories
 
   resources :users, :except => [:destroy]
 

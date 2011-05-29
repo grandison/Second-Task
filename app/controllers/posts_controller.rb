@@ -1,12 +1,11 @@
 class PostsController < ApplicationController
-  before_filter :authenticate, :except => [:show,:vote]
   before_filter :find_post, :only => [:edit,:update,:destroy]
   def index
     @posts = Post.all
   end
 
   def show
-    @post = Post.find(params[:id])
+    post = Post.find(params[:id])
     @comments=@post.comments
     @comment=Comment.new
   end
@@ -50,13 +49,18 @@ class PostsController < ApplicationController
   end
 
   def vote
-    render :nothing => true
-    post=Post.find(params[:id])
-    unless cookies[:vote]
-      vote = params[:vote]=="1"?1:-1
-      cookies[:vote]=1
-      post.rating+=vote
-      post.save
+    respond_to do |format|
+      format.js do
+          post=Post.find(params[:id])
+          @rating="You already have voted"
+          unless cookies[:vote] || (signed_in?&&!current_user.vote)
+            vote = params[:vote]=="1"?1:-1
+            cookies[:vote]=1
+            post.rating+=vote
+            post.save
+            @rating=post.rating
+          end
+      end
     end
   end
 

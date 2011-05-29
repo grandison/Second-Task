@@ -3,13 +3,13 @@ class UsersController < ApplicationController
   before_filter :correct_user, :only => [:edit, :update]
 
   def index
-    @users = User.paginate(:page => params[:page])
+    @users = User.paginate(:per_page => 10,:page => params[:page])
     @title = "All users"
   end
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.paginate(:page => params[:page])
+    @posts = @user.posts.paginate(:per_page => 10,:page => params[:page])
     @title = @user.name
     @post =Post.new
     @categories=Category.all.map{|cat| [cat.name,cat.id]}

@@ -1,9 +1,10 @@
 .container {
   width: 710px;
+  background: url("../images/page_bg.png") repeat-y scroll center top transparent;
 }
 
 body {
-  background: #cff;
+background: none repeat scroll 0 0 #F7F6F5;
 }
 
 header {
@@ -87,9 +88,9 @@ a.signup_button {
   padding: 20px;
 }
 .round {
-  -moz-border-radius:    10px;
-  -webkit-border-radius: 10px;
-  border-radius:         10px;
+margin-top:50px;
+padding: 10px;
+-moz-border-radius: 6px 6px 6px 6px;
 }
 footer {
   text-align: center;
@@ -228,5 +229,23 @@ form.new_post {
 form.new_post textarea {
   height: 4em;
   margin-bottom: 0;
+}
+.top{
+  float:right;
+  margin-top: 0px;
+}
+.logo{
+  font: 18px 'PT Sans',Arial,sans-serif;
+  margin-top: 0px;
+  margin-left: 10px;
+  background-color: #999;
+  color: #FFF
+}
+.title{
+  font: 26px/1 "FuturaMediumCTTRegular",serif;
+}
+.author{
+ color: #808080;
+ font: italic 13px/15px "Georgia",serif;
 }
 
