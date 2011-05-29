@@ -33,10 +33,10 @@ end
   rating = rand(1000)
   Post.create!(:user_id => user_id,
                   :category_id => category_id,
-                  :topic => topic,
+                  :topic => topic[0..254],
                   :text => text,
-                  :source => source,
-                  :tags => tags,
+                  :source => source[0..254],
+                  :tags => tags[0..254],
                   :rating => rating)
 end
 
