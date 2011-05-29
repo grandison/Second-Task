@@ -2,11 +2,11 @@ class PagesController < ApplicationController
   def home
     @title= "Home"
     rating_min = 4
-    @posts= Post.where("rating >= ?",[rating_min])
+    @posts= Post.where("rating >= ?",[rating_min]).order("rating DESC, created_at DESC")
   end
   def other_news
     @title= "Other news"
-    @posts= Post.all
+    @posts= Post.order("rating DESC, created_at DESC").all
     render 'home'
   end
   def contact
