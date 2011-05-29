@@ -5,3 +5,38 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+
+require 'faker'
+
+Rake::Task['db:reset'].invoke
+99.times do |n|
+  name  = Faker::Name.name
+  email = "example-#{n+1}@railstutorial.org"
+  password  = "password"
+  User.create!(:name => name,
+                :email => email,
+                :password => password,
+                :password_confirmation => password)
+end
+10.times do |n|
+  name = Faker::Company.name
+  Category.create!(:name => name)
+end
+
+99.times do |n|
+  user_id = 1+rand(99)
+  category_id = 1+rand(10)
+  topic = Faker::Lorem.paragraph
+  text = Faker::Lorem.sentences
+  source = Faker::Lorem.paragraphs
+  tags = "test,test,test"
+  rating = rand(1000)
+  Post.create!(:user_id => user_id,
+                  :category_id => category_id,
+                  :topic => topic,
+                  :text => text,
+                  :source => source,
+                  :tags => tags,
+                  :rating => rating)
+end
+

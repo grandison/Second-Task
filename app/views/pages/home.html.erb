@@ -1,5 +1,6 @@
   <table class="front">
     <tr>
+    <%= will_paginate @posts %>
     <%= render :partial => @posts, :locals => {:rating => @rating_min} %>
     <% if @title=="Home" %>
       <td>
