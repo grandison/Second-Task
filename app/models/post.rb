@@ -6,10 +6,10 @@
 #  id          :integer         not null, primary key
 #  user_id     :integer
 #  category_id :integer
-#  topic       :string(255)
+#  topic       :text
 #  text        :text
-#  source      :string(255)
-#  tags        :string(255)
+#  source      :text
+#  tags        :text
 #  rating      :integer
 #  created_at  :datetime
 #  updated_at  :datetime
