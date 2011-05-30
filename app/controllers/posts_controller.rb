@@ -15,6 +15,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @categories=Category.all.map{|cat| [cat.name,cat.id]}
   end
 
   def create
