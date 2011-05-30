@@ -20,6 +20,5 @@ class Post < ActiveRecord::Base
   belongs_to :user
   has_many :comments, :dependent => :destroy
   validates :category_id,:text,:topic, :presence => true
-  validates :topic,:source,:tags, :length => {:maximum => 255}
 end
 

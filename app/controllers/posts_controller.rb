@@ -65,7 +65,7 @@ class PostsController < ApplicationController
             vote = params[:vote]=="1"?1:-1
             cookies[@post_id]=1
             post.rating+=vote
-            post.save
+            post.save!
             @rating=post.rating
             if signed_in?
               UserVotes.create(:user_id=>user_id,:post_id=>@post_id)
