@@ -1,11 +1,18 @@
 NewsSite::Application.routes.draw do
 
+  resources :users
+
+  resource :session, :only => [:new, :create, :destroy]
+
+  match 'signup' => 'users#new', :as => :signup
+
+  match '/activate/:activation_code' => 'users#activate', :as => :activate, :activation_code => nil
+
   resources :posts, :except => [:index] do
     member do
       post 'vote'
     end
   end
-  resources :sessions, :only => [:new, :create, :destroy]
 
 
   match '/signin',  :to => 'sessions#new'

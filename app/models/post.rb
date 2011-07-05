@@ -20,5 +20,8 @@ class Post < ActiveRecord::Base
   belongs_to :user
   has_many :comments, :dependent => :destroy
   validates :category_id,:text,:topic, :presence => true
+  scope :topic, lambda{|topic| where("topic LIKE ?",'%'+ topic + '%')}
+  scope :text, lambda{|text| where("text LIKE ?",'%'+ text + '%')}
+  scope :cat_id, lambda{|cat_id| where("category_id" => cat_id)}
 end
 

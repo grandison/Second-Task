@@ -42,7 +42,7 @@ GEM
       i18n (~> 0.4)
     gravatar_image_tag (1.0.0)
     i18n (0.5.0)
-    jquery-rails (1.0.11)
+    jquery-rails (1.0.12)
       railties (~> 3.0)
       thor (~> 0.14)
     mail (2.2.19)
@@ -51,7 +51,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
-    nokogiri (1.4.5)
+    nokogiri (1.4.6)
     polyglot (0.3.1)
     rack (1.2.3)
     rack-mount (0.6.14)
@@ -72,7 +72,7 @@ GEM
       activesupport (= 3.0.7)
       rake (>= 0.8.7)
       thor (~> 0.14.4)
-    rake (0.9.2)
+    rake (0.8.7)
     rspec (2.6.0)
       rspec-core (~> 2.6.0)
       rspec-expectations (~> 2.6.0)
@@ -86,12 +86,12 @@ GEM
       activesupport (~> 3.0)
       railties (~> 3.0)
       rspec (~> 2.6.0)
-    spork (0.8.5)
+    spork (0.9.0.rc8)
     sqlite3-ruby (1.3.2)
     thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
-    tzinfo (0.3.28)
+    tzinfo (0.3.29)
     webrat (0.7.3)
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
@@ -109,10 +109,10 @@ DEPENDENCIES
   jquery-rails
   railroady
   rails (= 3.0.7)
-  rake
+  rake (= 0.8.7)
   rspec
   rspec-rails
-  spork
+  spork (= 0.9.0.rc8)
   sqlite3-ruby (= 1.3.2)
   webrat
   will_paginate (~> 3.0.pre2)

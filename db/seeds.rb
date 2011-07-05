@@ -11,9 +11,11 @@ require 'faker'
 Rake::Task['db:reset'].invoke
 99.times do |n|
   name  = Faker::Name.name
+  login = "User#{n+1}"
   email = "example-#{n+1}@railstutorial.org"
   password  = "password"
   User.create!(:name => name,
+                :login => login,
                 :email => email,
                 :password => password,
                 :password_confirmation => password)
