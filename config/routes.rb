@@ -2,6 +2,8 @@ NewsSite::Application.routes.draw do
 
   resources :users
 
+  resources :categories
+
   resource :session, :only => [:new, :create, :destroy]
 
   match 'signup' => 'users#new', :as => :signup

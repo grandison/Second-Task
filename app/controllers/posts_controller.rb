@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_filter :find_post, :only => [:edit,:update,:destroy]
+  before_filter :admin?, :only => [:edit, :update, :new, :destroy, :create]
   def index
     @posts = Post.all
   end
@@ -75,10 +75,5 @@ class PostsController < ApplicationController
     end
   end
 
-private
-    def find_post
-      @post = Post.find(params[:id])
-      redirect_to(root_path) unless current_user?(@post.user)
-    end
 end
 

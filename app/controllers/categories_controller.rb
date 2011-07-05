@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-
+  before_filter :admin?, :only => [:edit, :update, :new, :destroy, :create]
   def index
     @categories = Category.all
   end
@@ -9,10 +9,12 @@ class CategoriesController < ApplicationController
   end
 
   def new
+    redirect_to root_path unless admin?
     @category = Category.new
   end
 
   def edit
+    redirect_to root_path unless admin?
     @category = Category.find(params[:id])
   end
 

@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-before_filter :find_comment, :only => [:show,:edit,:update,:destroy]
+  before_filter :find_comment, :only => [:show,:edit,:update,:destroy]
 
   def index
     @comments = Comment.all
