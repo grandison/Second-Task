@@ -24,12 +24,19 @@
     <td><%= post.tags %></td>
     <td><%= post.rating %></td>
     <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% if admin? %>
+      <td><%= link_to 'Edit', edit_post_path(post) %></td>
+    <% end %>
+    <% if admin? %>
+      <td><%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
+
   </tr>
 <% end %>
 </table>
 
 <br />
+    <% if admin? %>
+      <%= link_to 'New Post', new_post_path %>
+    <% end %>
 
-<%= link_to 'New Post', new_post_path %>
