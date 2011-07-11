@@ -9,13 +9,6 @@ class PagesController < ApplicationController
     @posts=@posts.paginate(:per_page => 10,:page => params[:page])
     @categories=Category.all
   end
-  def other_news
-    @title= "Other news"
-    @posts= Post.order("rating DESC, created_at DESC").
-                  all.
-                  paginate(:per_page => 10,:page => params[:page])
-    render 'home'
-  end
   def contact
     @title= "Contact"
   end

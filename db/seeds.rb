@@ -18,7 +18,8 @@ Rake::Task['db:reset'].invoke
                 :login => login,
                 :email => email,
                 :password => password,
-                :password_confirmation => password)
+                :password_confirmation => password,
+                :activated_at => Time.now.utc)
 end
 10.times do |n|
   name = Faker::Company.name

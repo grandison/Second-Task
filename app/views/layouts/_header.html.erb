@@ -3,7 +3,6 @@
   <nav class="top round">
     <ul>
       <li><%= link_to "Home", root_path %></li>
-      <li><%= link_to "Other news", other_news_path %></li>
       <% if logged_in? %>
       <li><%= link_to "Users", users_path %></li>
       <li><%= link_to "Profile", current_user %></li>

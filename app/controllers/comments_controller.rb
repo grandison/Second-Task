@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
   before_filter :find_comment, :only => [:show,:edit,:update,:destroy]
-
   def index
     @comments = Comment.all
   end
@@ -20,12 +19,17 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(params[:comment])
-    if signed_in?
+    @post=@comment.post
+    @comment.approve=0
+    if logged_in?
     @comment.user_id=current_user.id
     else
     @comment.user_id=0
     end
     respond_to do |format|
+      unless verify_recaptcha
+        format.html {redirect_to(@post, :notice => 'wrong captcha')}
+      end
       if @comment.save
         format.html { redirect_to(@comment, :notice => 'Comment was successfully created.') }
       else
@@ -51,10 +55,29 @@ class CommentsController < ApplicationController
       format.html { redirect_to(comments_url) }
     end
   end
+
+  def approve
+    respond_to do |format|
+      format.js do
+        comment=Comment.find(params[:id])
+        comment.approve=1
+        comment.save
+      end
+    end
+  end
+  def disapprove
+    respond_to do |format|
+      format.js do
+        comment=Comment.find(params[:id])
+        comment.approve=-1
+        comment.save
+      end
+    end
+  end
 private
     def find_comment
       @comment = Comment.find(params[:id])
-      redirect_to(root_path) unless current_user?(@comment.user)
+      redirect_to(root_path) unless current_user.id==@comment.user.id
     end
 end
 

@@ -63,6 +63,7 @@ class UsersController < ApplicationController
   def sign_in?
     authorized?
   end
+
   private
 
     def correct_user

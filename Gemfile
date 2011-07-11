@@ -8,6 +8,7 @@ gem 'will_paginate', "~> 3.0.pre2"
 gem 'jquery-rails'
 gem 'faker'
 gem 'railroady'
+gem 'recaptcha', :require => 'recaptcha/rails', :git => 'git://github.com/ambethia/recaptcha.git'
 
 group :development do
   gem 'rspec-rails'

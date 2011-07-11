@@ -15,6 +15,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
     @categories=Category.all.map{|cat| [cat.name,cat.id]}
   end
 
@@ -75,5 +76,10 @@ class PostsController < ApplicationController
     end
   end
 
+  private
+  def admin?
+    return true if current_user&&current_user.admin?
+    return false
+  end
 end
 

@@ -71,6 +71,9 @@ class User < ActiveRecord::Base
     write_attribute :email, (value ? value.downcase : nil)
   end
 
+  def admin?
+    User.first.id==id
+  end
   protected
 
   def make_activation_code

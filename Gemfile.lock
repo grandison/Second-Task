@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/ambethia/recaptcha.git
+  revision: 5d438587c53e33aec7dfc17081bcb8ab64c4687e
+  specs:
+    recaptcha (0.3.2)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -110,6 +116,7 @@ DEPENDENCIES
   railroady
   rails (= 3.0.7)
   rake (= 0.8.7)
+  recaptcha!
   rspec
   rspec-rails
   spork (= 0.9.0.rc8)

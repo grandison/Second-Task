@@ -1,9 +1,19 @@
 <tr>
   <td class="comment">
     <span class="content">
+    <% if comment.approve==1 %>
+      Admin approve this comment
+    <% end %>
+    <% if comment.approve==-1 %>
+      Admin disapprove this comment
+    <% end %>
       <%= link_to comment.text,comment %>
-      <% if current_user?(comment.user) %>
+      <% if current_user.id==comment.user.id %>
         <%= link_to "edit",edit_comment_path(comment) %>
+      <% end %>
+      <% if current_user.admin? %>
+        <%= link_to "approve",approve_comment_path(comment), :method => "post", :remote => true %>
+        <%= link_to "disapprove",disapprove_comment_path(comment), :method => "post", :remote => true %>
       <% end %>
       <br />
     </span>

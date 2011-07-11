@@ -18,14 +18,6 @@
     <% end %>
     <%= will_paginate @posts %>
     <%= render :partial => @posts, :locals => {:rating => @rating_min} %>
-    <% if @title=="Home" %>
-      <td>
-      <span class="span-8">
-        Only cool news are showing.
-        <%= link_to "Want more?",other_news_path%>
-      <span>
-      </td>
-    <% end %>
     </tr>
   </table>
 
