@@ -6,8 +6,8 @@
         <%= @user.name %>
       </h1>
 
-      <%= render 'posts/form' if !current_user.nil? &&
-                                      current_user.id.to_s==params[:id] && admin? %>
+      <%= render 'posts/form' if logged_in? &&
+                                      current_user.id.to_s==params[:id] && current_user.admin? %>
       <br />
       <% unless @user.posts.empty? %>
         <span class="span-4">Your posts:</span>

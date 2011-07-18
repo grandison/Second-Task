@@ -8,10 +8,10 @@
       Admin disapprove this comment
     <% end %>
       <%= link_to comment.text,comment %>
+      <% if logged_in?&&current_user.admin? %>
       <% if current_user.id==comment.user.id %>
         <%= link_to "edit",edit_comment_path(comment) %>
       <% end %>
-      <% if current_user.admin? %>
         <%= link_to "approve",approve_comment_path(comment), :method => "post", :remote => true %>
         <%= link_to "disapprove",disapprove_comment_path(comment), :method => "post", :remote => true %>
       <% end %>

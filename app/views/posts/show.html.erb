@@ -1,7 +1,7 @@
 <div id=<%="post#{@post.id}" %>>
   <p id="notice" ><%= notice %></p>
   <span class="subheader">
-    <% if current_user.admin? %>
+    <% if logged_in?&&current_user.admin? %>
     <%= link_to 'Edit post', edit_post_path(@post) %>
     <% end %>
   </span>
@@ -29,7 +29,11 @@
   <br />
   <br />
   <p>
-    <%= @post.text %>
+<% unless @post.tags.blank? %>
+<p><strong>Tags:</strong>
+<%= @post.tags.collect{|tag| tag.name} %></p>
+
+<% end %>
   </p>
   <%= render :partial => "posts/rating",:locals =>{:post => @post} %>
 </div>

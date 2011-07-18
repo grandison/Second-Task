@@ -77,7 +77,6 @@ class CommentsController < ApplicationController
 private
     def find_comment
       @comment = Comment.find(params[:id])
-      redirect_to(root_path) unless current_user.id==@comment.user.id
     end
 end
 

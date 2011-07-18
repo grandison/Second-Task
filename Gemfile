@@ -7,8 +7,9 @@ gem 'gravatar_image_tag'
 gem 'will_paginate', "~> 3.0.pre2"
 gem 'jquery-rails'
 gem 'faker'
-gem 'railroady'
 gem 'recaptcha', :require => 'recaptcha/rails', :git => 'git://github.com/ambethia/recaptcha.git'
+gem 'acts-as-taggable-on'
+gem 'rails3-jquery-autocomplete', :git => 'git://github.com/hagenburger/rails3-jquery-autocomplete.git'
 
 group :development do
   gem 'rspec-rails'

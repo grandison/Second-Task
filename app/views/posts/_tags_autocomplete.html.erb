@@ -1,0 +1,4 @@
+$(function(){
+  $("#user_tag_list").autoSuggest('http://localhost:3000/posts/tags.json', {selectedItemProp: "name", searchObjProps: "name", asHtmlID: "tag_list"});
+})
+

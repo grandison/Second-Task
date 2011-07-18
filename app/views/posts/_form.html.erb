@@ -27,10 +27,7 @@
     <%= f.label :source %><br />
     <%= f.text_field :source %>
   </div>
-  <div class="field">
-    <%= f.label :tags %><br />
-    <%= f.text_field :tags %>
-  </div>
+  <%=f.autocomplete_field :tag_list, autocomplete_tag_name_posts_path, :"data-delimiter" => ', '%>
   <div class="actions">
     <%= f.submit %>
   </div>

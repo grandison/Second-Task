@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_filter :admin?, :only => [:edit, :update, :new, :destroy, :create]
+  autocomplete :tag, :name, :class_name => 'ActsAsTaggableOn::Tag'
   def index
     @posts = Post.all
   end
@@ -21,6 +22,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(params[:post])
+    @post.tag_list=params[:tag_list]
     @post.user_id = current_user.id
     @post.rating = 0
     respond_to do |format|
@@ -33,6 +35,8 @@ class PostsController < ApplicationController
   end
 
   def update
+    @post = Post.find(params[:id])
+    @post.tag_list=params[:as_values_tag_list]
     respond_to do |format|
       if @post.update_attributes(params[:post])
         format.html { redirect_to(@post, :notice => 'Post was successfully updated.') }
@@ -76,6 +80,13 @@ class PostsController < ApplicationController
     end
   end
 
+  def tags
+    respond_to do |format|
+      format.json do
+        render :json => Post.tags.map(&:attributes)
+      end
+    end
+  end
   private
   def admin?
     return true if current_user&&current_user.admin?

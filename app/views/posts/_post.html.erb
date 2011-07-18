@@ -11,10 +11,15 @@
       <b>Category:</b>
       <%= post.category.name %>
     </span>
-    <span>
-      <b>Tags:</b>
-      <%= post.tags %>
-    </span>
+<% unless post.tags.blank? %>
+
+<p><strong>Tags:</strong>
+
+<%= post.tags.collect{|tag| link_to tag.name,
+
+:action => 'tag', :id => tag}.join(", ") %></p>
+
+<% end %>
     <span>
       <b>Source:</b>
       <%= post.source %>

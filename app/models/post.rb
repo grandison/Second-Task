@@ -19,9 +19,14 @@ class Post < ActiveRecord::Base
   belongs_to :category
   belongs_to :user
   has_many :comments, :dependent => :destroy
+  has_many :tags
   validates :category_id,:text,:topic, :presence => true
+  acts_as_taggable_on :tags
   scope :topic, lambda{|topic| where("topic LIKE ?",'%'+ topic + '%')}
   scope :text, lambda{|text| where("text LIKE ?",'%'+ text + '%')}
   scope :cat_id, lambda{|cat_id| where("category_id" => cat_id)}
+  def self.tags
+    ActsAsTaggableOn::Tag.all
+  end
 end
 
