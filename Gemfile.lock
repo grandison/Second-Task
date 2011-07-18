@@ -11,6 +11,12 @@ GIT
     rails3-jquery-autocomplete (0.9.0)
       rails (~> 3.0)
 
+GIT
+  remote: git://github.com/parasew/acts_as_tree.git
+  revision: ed52495d1671c99e1add582628403bf8104e9077
+  specs:
+    acts_as_tree (1.2.3)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -116,6 +122,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on
+  acts_as_tree!
   annotate-models
   factory_girl_rails
   faker

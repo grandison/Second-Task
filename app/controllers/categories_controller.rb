@@ -50,5 +50,10 @@ class CategoriesController < ApplicationController
       format.html { redirect_to(categories_url) }
     end
   end
+  private
+  def admin?
+    return true if current_user&&current_user.admin?
+    return false
+  end
 end
 

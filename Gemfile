@@ -10,6 +10,7 @@ gem 'faker'
 gem 'recaptcha', :require => 'recaptcha/rails', :git => 'git://github.com/ambethia/recaptcha.git'
 gem 'acts-as-taggable-on'
 gem 'rails3-jquery-autocomplete', :git => 'git://github.com/hagenburger/rails3-jquery-autocomplete.git'
+gem 'acts_as_tree', :git => 'git://github.com/parasew/acts_as_tree.git'
 
 group :development do
   gem 'rspec-rails'
