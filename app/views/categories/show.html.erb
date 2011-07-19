@@ -1,26 +1,48 @@
-<p id="notice"><%= notice %></p>
-<ul id="menu">
+<ul class="menu">
+  <p>
+    Main categories:
+  </p>
   <% for cat in Category.roots %>
-    <li><%= link_to cat.name, cat %></li>
+    <li>
+      <%= link_to cat.name, cat %>
+    </li>
   <% end %>
 </ul>
-<div>
-<% for cat in @category.ancestors.reverse %>
-  <%= link_to cat.name, cat %> &gt;
-<% end %>
-</div>
-<p>
-  <b>Name:</b>
-  <%= @category.name %>
-</p>
-<% unless @category.children.empty? %>
-  <ul id="submenu">
-  <% for cat in @category.children %>
-  <li><%= link_to cat.name, cat %></li>
-  <% end %>
+<% unless @category.ancestors.empty? %>
+  <ul class="menu">
+    <p>
+      Ancestors:
+    </p>
+    <% for cat in @category.ancestors.reverse %>
+      <li>
+        <%= link_to cat.name, cat %>
+      </li>
+    <% end %>
   </ul>
 <% end %>
+<ul class="menu">
+  <p>
+    Name:
+  </p>
+  <li>
+    <%= link_to @category.name, @category %>
+  </li>
+</ul>
 
+<% unless @category.children.empty? %>
+  <ul class="menu">
+    <p>
+      Childrens:
+    </p>
+    <% for cat in @category.children %>
+      <li>
+        <%= link_to cat.name, cat %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>
+<%= will_paginate @posts %>
+<%= render :partial => @posts %>
 

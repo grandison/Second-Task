@@ -12,6 +12,10 @@
 class Category < ActiveRecord::Base
   has_many :posts, :dependent => :destroy
   validates :name, :presence => true
+  validate :presence_of_parent
   acts_as_tree
+  def presence_of_parent
+    errors.add(:parent_id, 'is not a valid parent') if !parent&&parent_id
+  end
 end
 

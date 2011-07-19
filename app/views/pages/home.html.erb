@@ -17,7 +17,7 @@
     <%= submit_tag 'Sort' %>
     <% end %>
     <%= will_paginate @posts %>
-    <%= render :partial => @posts, :locals => {:rating => @rating_min} %>
+    <%= render :partial => @posts %>
     </tr>
   </table>
 
