@@ -1,6 +1,6 @@
 <div class="post" id=<%="post#{post.id}" %>>
     <p class="title colborder">
-      <%= link_to post.topic,post_path(post) %>
+      <%= link_to post.topic.html_safe,post_path(post) %>
     </p>
     <p>
       Posted <%= time_ago_in_words(post.created_at) %> ago by
@@ -23,7 +23,7 @@
       <%= post.source %>
     </p>
     <div>
-      <%= post.text %>
+      <%= post.text.html_safe %>
     </div>
     <%= render :partial => "posts/rating",:locals =>{:post => post} %>
 </div>

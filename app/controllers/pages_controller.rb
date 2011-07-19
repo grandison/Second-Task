@@ -1,5 +1,4 @@
 class PagesController < ApplicationController
-
   def home
     @title= "Home"
     @posts= Post.scoped
@@ -12,6 +11,8 @@ class PagesController < ApplicationController
     else
       @posts = @posts.order("rating DESC")
     end
+    @posts=colorize(@posts,:topic,params[:topic]) if params[:topic].present?
+    @posts=colorize(@posts,:text,params[:text]) if params[:text].present?
     @posts=@posts.paginate(:per_page => 10,:page => params[:page])
     @categories=Category.all
   end
@@ -24,5 +25,11 @@ class PagesController < ApplicationController
     @title= "About"
   end
 
+  private
+  def colorize (scope,field,replace)
+    for p in scope
+      p.send(field).gsub!(replace,"<font style='background-color:#FFFF00'>"+replace+"</font>")
+    end
+  end
 end
 
