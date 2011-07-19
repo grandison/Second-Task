@@ -1,14 +1,24 @@
 class PostsController < ApplicationController
+
   before_filter :admin?, :only => [:edit, :update, :new, :destroy, :create]
+  before_filter :find_post, :only => [:show,:edit,:update,:destroy]
   autocomplete :tag, :name, :class_name => 'ActsAsTaggableOn::Tag'
+
   def index
     @posts = Post.all
+    respond_to do |format|
+      format.html
+      format.xml {render :xml => @posts}
+    end
   end
 
   def show
-    @post = Post.find(params[:id])
     @comments=@post.comments
     @comment=Comment.new
+    respond_to do |format|
+      format.html
+      format.xml {render :xml => @post}
+    end
   end
 
   def new
@@ -16,7 +26,6 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
     @categories=Category.all.map{|cat| [cat.name,cat.id]}
   end
 
@@ -25,33 +34,25 @@ class PostsController < ApplicationController
     @post.tag_list=params[:tag_list]
     @post.user_id = current_user.id
     @post.rating = 0
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to(@post, :notice => 'Post was successfully created.') }
-      else
-        format.html { render :action => "new" }
-      end
+    if @post.save
+      redirect_to(@post, :notice => 'Post was successfully created.')
+    else
+      render :action => "new"
     end
   end
 
   def update
-    @post = Post.find(params[:id])
     @post.tag_list=params[:as_values_tag_list]
-    respond_to do |format|
-      if @post.update_attributes(params[:post])
-        format.html { redirect_to(@post, :notice => 'Post was successfully updated.') }
-      else
-        format.html { render :action => "edit" }
-      end
+    if @post.update_attributes(params[:post])
+      redirect_to(@post, :notice => 'Post was successfully updated.')
+    else
+      render :action => "edit"
     end
   end
 
   def destroy
     @post.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(posts_url) }
-    end
+    redirect_to(posts_url)
   end
 
   def vote
@@ -80,17 +81,13 @@ class PostsController < ApplicationController
     end
   end
 
-  def tags
-    respond_to do |format|
-      format.json do
-        render :json => Post.tags.map(&:attributes)
-      end
-    end
-  end
   private
   def admin?
     return true if current_user&&current_user.admin?
     return false
+  end
+  def find_post
+    @post = Post.find(params[:id])
   end
 end
 

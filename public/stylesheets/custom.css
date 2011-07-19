@@ -272,4 +272,15 @@ form.new_post textarea {
   color: white;
   background-color: #4A63B8;
 }
+.approve{
+  background-color: #8FBC8F;
+}
+.disapprove{
+  background-color: #F08080;
+}
+.post{
+  background-color: #DDD;
+  margin-top: 10px;
+  padding: 10px;
+}
 

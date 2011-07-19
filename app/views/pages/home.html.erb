@@ -1,19 +1,18 @@
   <table class="front">
     <tr>
-    <p>Sort news by</p>
+    Sort news by: <br /> <br />
     <%= form_tag root_path, :method => :get do %>
-    <%= radio_button_tag :order, 'desc', params[:order] == 'desc' %> убыванию  <br/>
-    <%= radio_button_tag :order, 'asc', params[:order] == 'asc' %> по возрастанию
-    <br/>
-    Фильтр:  <br/>
-    по теме: <%= text_field_tag :topic, params[:topic], :size => 10  %><br/>
-    с текстом: <%= text_field_tag :text, params[:text], :size => 10  %><br/>
-    по категории:
-        <select name="category_id">
-        <% @categories.each do |cat|%>
-        <option value="<%=cat.id%>"><%=cat.name%></option>
-        <% end %>
-    </select>
+      <%= radio_button_tag :order, 'desc', params[:order] == 'desc' %> decreasing <br />
+      <%= radio_button_tag :order, 'asc', params[:order] == 'asc' %> increasing <br />
+    topic: <%= text_field_tag :topic, params[:topic], :size => 10  %><br/>
+    with text: <%= text_field_tag :text, params[:text], :size => 10  %><br/>
+    category:
+    <select name="category_id">
+      <option value=""></option>
+      <% @categories.each do |cat|%>
+      <option value="<%=cat.id%>"><%=cat.name%></option>
+      <% end %>
+    </select> <br />
     <%= submit_tag 'Sort' %>
     <% end %>
     <%= will_paginate @posts %>

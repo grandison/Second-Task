@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+
   def home
     @title= "Home"
     @posts= Post.scoped
@@ -6,13 +7,14 @@ class PagesController < ApplicationController
     @posts= @posts.text(params[:text]) if params[:text].present?
     @posts= @posts.cat_id(params[:category_id]) if params[:category_id].present?
     if params[:order].present?
-      @posts = @posts.order("posts.updated_at #{params[:order]}")
+      @posts = @posts.order("rating #{params[:order]}")
     else
-      @posts = @posts.order("posts.updated_at DESC")
+      @posts = @posts.order("rating DESC")
     end
     @posts=@posts.paginate(:per_page => 10,:page => params[:page])
     @categories=Category.all
   end
+
   def contact
     @title= "Contact"
   end

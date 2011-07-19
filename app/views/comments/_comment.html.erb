@@ -1,25 +1,28 @@
-<tr>
-  <td class="comment">
-    <span class="content">
+<div class="comment" id="comment_<%=comment.id%>">
+  <div class="
     <% if comment.approve==1 %>
-      Admin approve this comment
+      approve
+    <% else if comment.approve==-1 %>
+        disapprove
+      <% else %>
+        normal
+      <% end %>
     <% end %>
-    <% if comment.approve==-1 %>
-      Admin disapprove this comment
-    <% end %>
-      <%= link_to comment.text,comment %>
-      <% if logged_in?&&current_user.admin? %>
+  ">
+    <%= link_to comment.text,comment %>
+    <% if logged_in?&&current_user.admin? %>
       <% if current_user.id==comment.user.id %>
         <%= link_to "edit",edit_comment_path(comment) %>
       <% end %>
-        <%= link_to "approve",approve_comment_path(comment), :method => "post", :remote => true %>
-        <%= link_to "disapprove",disapprove_comment_path(comment), :method => "post", :remote => true %>
-      <% end %>
-      <br />
-    </span>
-    <span class="timestamp">
+      <%= link_to "approve",approve_comment_path(comment),:method => "post",
+                                                          :remote => true %>
+      <%= link_to "disapprove",disapprove_comment_path(comment),
+                                                          :method => "post",
+                                                          :remote => true %>
+    <% end %>
+    <p class="timestamp">
       Posted <%= time_ago_in_words(comment.created_at) %> ago.
-    </span> <br /> <br />
-  </td>
-</tr>
+    </p>
+  </div>
+</div>
 

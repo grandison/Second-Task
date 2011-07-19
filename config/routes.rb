@@ -15,7 +15,6 @@ NewsSite::Application.routes.draw do
       post 'vote'
     end
     collection do
-      get '/tags'
       get 'autocomplete_tag_name'
     end
   end
@@ -29,7 +28,7 @@ NewsSite::Application.routes.draw do
   match '/signup',  :to => 'users#new'
   root :to => 'pages#home'
 
-  resources :comments, :except => [:index] do
+  resources :comments, :except => [:new] do
     member do
       post 'approve'
       post 'disapprove'

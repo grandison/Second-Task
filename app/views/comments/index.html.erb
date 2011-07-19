@@ -1,5 +1,4 @@
 <h1>Listing comments</h1>
-
 <table>
   <tr>
     <th>User</th>
@@ -8,7 +7,6 @@
     <th></th>
     <th></th>
   </tr>
-
 <% @comments.each do |comment| %>
   <tr>
     <td><%= comment.user_id %></td>
@@ -19,8 +17,4 @@
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Comment', new_comment_path %>
 
