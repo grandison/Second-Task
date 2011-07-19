@@ -4,8 +4,10 @@
     <%= form_tag root_path, :method => :get do %>
       <%= radio_button_tag :order, 'desc', params[:order] == 'desc' %> decreasing <br />
       <%= radio_button_tag :order, 'asc', params[:order] == 'asc' %> increasing <br />
-    topic: <%= text_field_tag :topic, params[:topic], :size => 10  %><br/>
-    with text: <%= text_field_tag :text, params[:text], :size => 10  %><br/>
+    topic: <%= text_field_tag :topic, params[:topic], :size => 50  %><br/>
+    with text: <%= text_field_tag :text, params[:text], :size => 50  %><br/>
+    with tags: <%= autocomplete_field :post,:tag_list, autocomplete_tag_name_posts_path,
+                                                    :"data-delimiter" => ', '%><br />
     category:
     <select name="category_id">
       <option value=""></option>

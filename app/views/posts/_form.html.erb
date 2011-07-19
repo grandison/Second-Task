@@ -1,7 +1,10 @@
 <%= form_for(@post) do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <h2>
+        <%= pluralize(@post.errors.count, "error") %>
+        prohibited this post from being saved:
+      </h2>
       <ul>
         <% @post.errors.full_messages.each do |msg| %>
           <li>
@@ -27,7 +30,8 @@
     <%= f.label :source %><br />
     <%= f.text_field :source %>
   </div>
-  <%=f.autocomplete_field :tag_list, autocomplete_tag_name_posts_path, :"data-delimiter" => ', '%>
+  <%=f.autocomplete_field :tag_list, autocomplete_tag_name_posts_path,
+                                                    :"data-delimiter" => ', '%>
   <div class="actions">
     <%= f.submit %>
   </div>
