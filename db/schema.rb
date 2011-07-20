@@ -33,8 +33,6 @@ ActiveRecord::Schema.define(:version => 20110718170354) do
     t.integer  "category_id"
     t.text     "topic"
     t.text     "text"
-    t.text     "source"
-    t.text     "tags"
     t.integer  "rating"
     t.datetime "created_at"
     t.datetime "updated_at"

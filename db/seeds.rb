@@ -31,15 +31,13 @@ end
   category_id = 1+rand(10)
   topic = Faker::Lorem.paragraph
   text = Faker::Lorem.sentences
-  source = Faker::Lorem.paragraphs
-  tags = "test,test,test"
+  tag_list = "tag, shmag, bag"
   rating = rand(1000)
   Post.create!(:user_id => user_id,
                   :category_id => category_id,
                   :topic => topic[0..250],
                   :text => text,
-                  :source => source[0..250],
-                  :tags => tags[0..250],
+                  :tag_list => tag_list,
                   :rating => rating)
 end
 
