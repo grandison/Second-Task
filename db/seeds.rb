@@ -14,12 +14,14 @@ Rake::Task['db:reset'].invoke
   login = "User#{n+1}"
   email = "example-#{n+1}@railstutorial.org"
   password  = "password"
-  User.create!(:name => name,
+  u=User.new(:name => name,
                 :login => login,
                 :email => email,
                 :password => password,
-                :password_confirmation => password,
-                :activated_at => Time.now.utc)
+                :password_confirmation => password)
+  u.activate!
+  u.save
+
 end
 10.times do |n|
   name = Faker::Company.name
