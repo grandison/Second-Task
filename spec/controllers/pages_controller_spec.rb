@@ -12,7 +12,17 @@ describe PagesController do
     it "should have the right title" do
       get 'home'
       response.should have_selector("title",
-                        :content => "Ruby on Rails Tutorial Sample App | Home")
+                        :content => "Home")
+    end
+
+    it "should create post" do
+      user = Factory(:user)
+      cat = Factory(:category)
+      post = Post.create!(:user_id => 1, :category_id => 1,
+                                         :text => "ich ni san",
+                                         :topic => "sayonara")
+      get :home
+      assigns(:posts).should eq([post])
     end
   end
 
@@ -26,7 +36,7 @@ describe PagesController do
       get 'contact'
       response.should have_selector("title",
                         :content =>
-                          "Ruby on Rails Tutorial Sample App | Contact")
+                          "Contact")
     end
   end
 
@@ -40,7 +50,7 @@ describe PagesController do
       get 'about'
       response.should have_selector("title",
                         :content =>
-                          "Ruby on Rails Tutorial Sample App | About")
+                          "About")
     end
   end
 end

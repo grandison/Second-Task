@@ -17,8 +17,10 @@
     </select> <br />
     <%= submit_tag 'Sort' %>
     <% end %>
-    <%= will_paginate @posts %>
-    <%= render :partial => @posts %>
+    <% if @posts.any? %>
+      <%= will_paginate @posts %>
+      <%= render :partial => @posts %>
+    <% end %>
     </tr>
   </table>
 

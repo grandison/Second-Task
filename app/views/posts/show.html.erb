@@ -15,15 +15,15 @@
 
   <span>
     <b>Category:</b>
-    <%= @post.category.name %>
+    <%= link_to @post.category.name,@post.category %>
   </span>
   <span>
   <p><strong>Tags:</strong>
   <%= @post.tags.collect{|tag| tag.name+" "} %></p>
   </span>
   <span>
-    <b>Source:</b>
-    <%= @post.source %>
+    <b>Text:</b>
+    <%= @post.text.html_safe %>
   </span>
   <br />
   <br />

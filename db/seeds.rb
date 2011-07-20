@@ -27,7 +27,7 @@ end
 end
 
 99.times do |n|
-  user_id = 1+rand(99)
+  user_id = User.first.id
   category_id = 1+rand(10)
   topic = Faker::Lorem.paragraph
   text = Faker::Lorem.sentences

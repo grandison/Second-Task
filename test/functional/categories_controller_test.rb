@@ -3,6 +3,7 @@ require 'test_helper'
 class CategoriesControllerTest < ActionController::TestCase
   setup do
     @category = categories(:one)
+    login_as User.first
   end
 
   test "should get index" do
@@ -47,3 +48,4 @@ class CategoriesControllerTest < ActionController::TestCase
     assert_redirected_to categories_path
   end
 end
+

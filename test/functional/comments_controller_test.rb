@@ -11,11 +11,6 @@ class CommentsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:comments)
   end
 
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-
   test "should create comment" do
     assert_difference('Comment.count') do
       post :create, :comment => @comment.attributes
@@ -47,3 +42,4 @@ class CommentsControllerTest < ActionController::TestCase
     assert_redirected_to comments_path
   end
 end
+

@@ -28,7 +28,8 @@ class PagesController < ApplicationController
   private
   def colorize (scope,field,replace)
     for p in scope
-      p.send(field).gsub!(replace,"<font style='background-color:#FFFF00'>"+replace+"</font>")
+      p.send(field).gsub!(/#{replace}/i,"<font style='background-color:#FFFF00'>"+replace.downcase+"</font>") do |match|
+      end
     end
   end
 end

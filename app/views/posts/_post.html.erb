@@ -8,7 +8,7 @@
     </p>
     <p>
       <b>Category:</b>
-      <%= post.category.name %>
+      <%= link_to post.category.name,post.category %>
     </p>
     <p>
       <strong>
@@ -18,13 +18,10 @@
     </p>
     <p>
       <strong>
-        Source:
+        Text:
       </strong>
-      <%= post.source %>
-    </p>
-    <div>
       <%= post.text.html_safe %>
-    </div>
+    </p>
     <%= render :partial => "posts/rating",:locals =>{:post => post} %>
 </div>
 
