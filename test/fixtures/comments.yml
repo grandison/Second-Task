@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110528171532
+# Schema version: 20110718170354
 #
 # Table name: comments
 #
@@ -9,14 +9,18 @@
 #  created_at :datetime
 #  updated_at :datetime
 #  text       :string(255)
+#  approve    :integer
 #
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
   user_id: 1
-  new_id: 1
+  post_id: <%=Fixtures.identify(:post1)%>
+  text: "hello all"
 
 two:
   user_id: 1
-  new_id: 1
+  post_id: <%=Fixtures.identify(:post1)%>
+  text: "yohohoh"
+

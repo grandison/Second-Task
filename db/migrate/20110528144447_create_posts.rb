@@ -5,8 +5,6 @@ class CreatePosts < ActiveRecord::Migration
       t.integer :category_id
       t.text :topic
       t.text :text
-      t.text :source
-      t.text :tags
       t.integer :rating
 
       t.timestamps
